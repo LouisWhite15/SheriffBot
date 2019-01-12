@@ -1,0 +1,11 @@
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\bin\Debug\netcoreapp2.1\SheriffBot.deps.json
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\bin\Debug\netcoreapp2.1\SheriffBot.runtimeconfig.json
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\bin\Debug\netcoreapp2.1\SheriffBot.runtimeconfig.dev.json
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\bin\Debug\netcoreapp2.1\SheriffBot.dll
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.csprojAssemblyReference.cache
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.csproj.CoreCompileInputs.cache
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.AssemblyInfoInputs.cache
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.AssemblyInfo.cs
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\bin\Debug\netcoreapp2.1\SheriffBot.pdb
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.dll
+C:\Users\louis\source\repos\SheriffBot\SheriffBot\obj\Debug\netcoreapp2.1\SheriffBot.pdb
