@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using SheriffBot.Helpers;
 
 namespace SheriffBot
 {
@@ -35,7 +36,12 @@ namespace SheriffBot
         {
             if (message.Content == "!pingSheriff")
             {
-                await message.Channel.SendMessageAsync($"My ping is: {_client.Latency}ms");
+                await message.Channel.SendMessageAsync($"My ping is: {_client.Latency}ms :ping_pong:");
+            }
+
+            if (message.Content == "!sheriff")
+            {
+                await message.Channel.SendMessageAsync($":{DiscordEmojiHelper.GetEmoji().ShortName}:");
             }
         }
     }
