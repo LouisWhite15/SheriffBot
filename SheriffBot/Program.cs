@@ -8,12 +8,13 @@ namespace SheriffBot
 {
     public class Program
     {
-        private static DiscordSocketClient _client = new DiscordSocketClient();
+        private static DiscordSocketClient _client;
 
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
         public async Task MainAsync()
         {
+            _client = new DiscordSocketClient();
             _client.Log += Log;
 
             var token = "NTMzNjQwNDcxOTYwODc5MTE3.DxuCrg.4_px2sh1-_PALKdj-63jRmPUpwc";  //TODO: Store this in an external file
@@ -41,7 +42,7 @@ namespace SheriffBot
 
             if (message.Content == "!sheriff")
             {
-                await message.Channel.SendMessageAsync($":{DiscordEmojiHelper.GetEmoji().ShortName}:");
+                await message.Channel.SendMessageAsync($":{DiscordEmojiHelper.GetRandomEmoji().ShortName}:");
             }
         }
     }
