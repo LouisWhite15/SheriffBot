@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using SheriffBot.Helpers;
+using SheriffBot.Models;
 
 namespace SheriffBot
 {
     public class Program
     {
         private static DiscordSocketClient _client;
+        private DiscordEmoji _emoji;
 
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
@@ -20,6 +22,13 @@ namespace SheriffBot
             var token = "NTMzNjQwNDcxOTYwODc5MTE3.DxuCrg.4_px2sh1-_PALKdj-63jRmPUpwc";  //TODO: Store this in an external file
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
+
+            //TODO: Set emoji as a random emoji
+            _emoji = new DiscordEmoji   
+            {
+                Name = "100",
+                ShortName = "100"
+            };
 
             _client.MessageReceived += MessageRecieved;
 
@@ -42,7 +51,7 @@ namespace SheriffBot
 
             if (message.Content == "!sheriff")
             {
-                await message.Channel.SendMessageAsync($":{DiscordEmojiHelper.GetRandomEmoji().ShortName}:");
+                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, "howdy. im the sheriff of suckin u off. im gon suck u off"));      //TODO: Generate message based on emoji selected
             }
         }
     }
