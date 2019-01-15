@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
@@ -50,7 +51,7 @@ namespace SheriffBot
 
             if (message.Content == "!sheriff")
             {
-                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, $"howdy. im the sheriff of {_emoji.Name}"));
+                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.Emoji, $"howdy. im the sheriff of {_emoji.Name}"));
                 SetRandomEmoji();
             }
 
@@ -63,12 +64,6 @@ namespace SheriffBot
         private void SetRandomEmoji()
         {
             _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
-
-            // TODO: Remove once Json can deserialize without some emoji failures
-            while (DiscordEmojiHelper.Validate(_emoji) == false)
-            {
-                _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
-            }
         }
     }
 }

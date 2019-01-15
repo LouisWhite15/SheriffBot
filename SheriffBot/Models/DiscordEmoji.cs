@@ -7,7 +7,7 @@ namespace SheriffBot.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("short_name")]
-        public string ShortName { get; set; }
+        [JsonProperty("char")]
+        public string Emoji { get; set; }
     }
 }
