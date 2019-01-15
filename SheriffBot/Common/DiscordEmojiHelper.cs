@@ -9,20 +9,17 @@ namespace SheriffBot.Helpers
 {
     public static class DiscordEmojiHelper
     {
-        public static DiscordEmoji GetRandomEmoji()
+        public static DiscordEmoji GetRandomEmoji(IEnumerable<DiscordEmoji> discordEmojis)
         {
-            var discordEmojis = GetAllAvailableEmojis();
-            Random rand = new Random();
-            var rng = rand.Next(0, discordEmojis.Count());
+            var rng = new Random(Guid.NewGuid().GetHashCode()).Next(0, discordEmojis.Count());
 
             return discordEmojis.ElementAt(rng);
         }
 
-        //TODO: Put this in its own class
-        //TODO: Make this work
+        //TODO: Make this work consistently
         public static IEnumerable<DiscordEmoji> GetAllAvailableEmojis()
         {
-            JObject emojis = JObject.Parse(File.ReadAllText(@"../../../emoji.json"));
+            JArray emojis = JArray.Parse(File.ReadAllText(@"../../../../emoji.json"));
 
             //Get JSON result objects into a list
             IList<JToken> allDiscordEmojis = emojis.Children().ToList();

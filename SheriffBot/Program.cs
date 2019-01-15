@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
@@ -11,6 +12,7 @@ namespace SheriffBot
     {
         private static DiscordSocketClient _client;
         private DiscordEmoji _emoji;
+        private IEnumerable<DiscordEmoji> _discordEmojis;
 
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
@@ -23,12 +25,10 @@ namespace SheriffBot
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 
+            _discordEmojis = DiscordEmojiHelper.GetAllAvailableEmojis();
+
             //TODO: Set emoji as a random emoji
-            _emoji = new DiscordEmoji   
-            {
-                Name = "100",
-                ShortName = "100"
-            };
+            SetRandomEmoji();
 
             _client.MessageReceived += MessageRecieved;
 
@@ -51,8 +51,19 @@ namespace SheriffBot
 
             if (message.Content == "!sheriff")
             {
-                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, "howdy. im the sheriff of suckin u off. im gon suck u off"));      //TODO: Generate message based on emoji selected
+                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, $"howdy. im the sheriff of {_emoji.Name}"));      //TODO: Generate message based on emoji selected
+                SetRandomEmoji();
             }
+
+            if (message.Content == "!daddy")
+            {
+                await message.Channel.SendMessageAsync(Constants.Daddy);
+            }
+        }
+
+        private void SetRandomEmoji()
+        {
+            _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
         }
     }
 }
