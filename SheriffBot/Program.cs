@@ -27,7 +27,6 @@ namespace SheriffBot
 
             _discordEmojis = DiscordEmojiHelper.GetAllAvailableEmojis();
 
-            //TODO: Set emoji as a random emoji
             SetRandomEmoji();
 
             _client.MessageReceived += MessageRecieved;
@@ -51,7 +50,7 @@ namespace SheriffBot
 
             if (message.Content == "!sheriff")
             {
-                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, $"howdy. im the sheriff of {_emoji.Name}"));      //TODO: Generate message based on emoji selected
+                await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.ShortName, $"howdy. im the sheriff of {_emoji.Name}"));
                 SetRandomEmoji();
             }
 
@@ -64,6 +63,12 @@ namespace SheriffBot
         private void SetRandomEmoji()
         {
             _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
+
+            // TODO: Remove once Json can deserialize without some emoji failures
+            while (DiscordEmojiHelper.Validate(_emoji) == false)
+            {
+                _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
+            }
         }
     }
 }
