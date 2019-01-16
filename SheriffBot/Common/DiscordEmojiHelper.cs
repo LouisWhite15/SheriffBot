@@ -16,6 +16,7 @@ namespace SheriffBot.Helpers
             return discordEmojis.ElementAt(rng);
         }
 
+        // TODO: Refactoring
         public static IEnumerable<DiscordEmoji> GetAllAvailableEmojis()
         {
             JArray emojis = JArray.Parse(File.ReadAllText(@"../../../../emoji.json"));

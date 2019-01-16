@@ -55,13 +55,9 @@ namespace SheriffBot
                 await message.Channel.SendMessageAsync(Constants.SheriffString(_emoji.Emoji, $"howdy. im the sheriff of {_emoji.Name}"));
                 SetRandomEmoji();
             }
-
-            if (message.Content == "!daddy")
-            {
-                await message.Channel.SendMessageAsync(Constants.Daddy);
-            }
         }
 
+        // TODO: Maybe do this in another class
         private void SetRandomEmoji()
         {
             _emoji = DiscordEmojiHelper.GetRandomEmoji(_discordEmojis);
