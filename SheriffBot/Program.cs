@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Newtonsoft.Json.Linq;
 using SheriffBot.Helpers;
 using SheriffBot.Models;
 
@@ -22,7 +23,7 @@ namespace SheriffBot
             _client = new DiscordSocketClient();
             _client.Log += Log;
 
-            var token = "NTMzNjQwNDcxOTYwODc5MTE3.DxuCrg.4_px2sh1-_PALKdj-63jRmPUpwc";  //TODO: Store this in an external file
+            var token = JObject.Parse(File.ReadAllText(@"../../../../config.json"))["token"].ToString();
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 
